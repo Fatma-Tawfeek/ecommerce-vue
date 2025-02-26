@@ -69,7 +69,7 @@
                 <div
                     class="flex items-center gap-4 mt-3 border-t-1 border-b-1 py-4 border-gray-200"
                 >
-                    <button class="btn-primary w-full">
+                    <button class="btn-primary w-full" @click="cartStore.addToCart(product._id)">
                         Add To Cart <i class="fa-solid fa-cart-shopping"></i>
                     </button>
                     <i
@@ -98,7 +98,7 @@
     </section>
 
     <loading
-        v-model:active="isLoading"
+        v-model:active="cartStore.isLoading"
         :can-cancel="true"
         :on-cancel="onCancel"
         :is-full-page="fullPage"
@@ -116,6 +116,7 @@ import Loading from "vue-loading-overlay";
 import "vue-loading-overlay/dist/css/index.css";
 import "vue3-carousel/carousel.css";
 import { Carousel, Slide, Navigation } from "vue3-carousel";
+import { useCartStore } from "@/stores/CartStore";
 
 /* product carousel */
 const currentSlide = ref(0);
@@ -156,6 +157,10 @@ function getProduct() {
 }
 
 function getRelatedProducts() {
+    if (!product.value.category) {
+        isLoading.value = false;
+        return;
+    }
     axios
         .get(
             `https://ecommerce.routemisr.com/api/v1/products?category[in]=${product.value.category._id}`
@@ -169,9 +174,21 @@ function getRelatedProducts() {
         });
 }
 
+/* add to cart */
+const cartStore = useCartStore();
+
 onMounted(() => {
     getProduct();
 });
+
+watch(
+    () => route.params.id,
+    (newId, oldId) => {
+        if (newId != oldId) {
+            getProduct();
+        }
+    }
+);
 </script>
 
 <style lang="scss" scoped></style>

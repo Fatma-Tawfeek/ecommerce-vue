@@ -174,7 +174,12 @@
             </router-link>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-5 gap-3">
-            <ProductCard v-for="product in products" :key="product.id" :product="product" />
+            <ProductCard
+                v-for="product in products"
+                :key="product.id"
+                :product="product"
+                @addToCart="cartStore.addToCart"
+            />
         </div>
     </section>
     <loading
@@ -184,6 +189,7 @@
         :is-full-page="fullPage"
         color="#00b207"
     />
+    <PopupComponent></PopupComponent>
 </template>
 
 <script setup>
@@ -192,9 +198,10 @@ import ProductCard from "@/components/ProductCard.vue";
 import axios from "axios";
 import { onMounted, ref } from "vue";
 import Loading from "vue-loading-overlay";
-import "vue-loading-overlay/dist/css/index.css";
 import "vue3-carousel/carousel.css";
 import { Carousel, Slide, Pagination, Navigation } from "vue3-carousel";
+import PopupComponent from "@/components/PopupComponent.vue";
+import { useCartStore } from "@/stores/CartStore";
 
 const config = {
     autoplay: 3000,
@@ -208,6 +215,8 @@ const isLoading = ref(false);
 
 const products = ref([]);
 const categories = ref([]);
+
+const cartStore = useCartStore();
 
 function getProducts() {
     isLoading.value = true;

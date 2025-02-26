@@ -18,7 +18,7 @@ onMounted(() => {
     <div>
         <MainNavbar v-if="authStore.isAuthenticated"></MainNavbar>
         <AuthNavbar v-else></AuthNavbar>
-        <RouterView />
+        <RouterView :key="$route.fullPath" />
         <FooterComponent></FooterComponent>
     </div>
 </template>

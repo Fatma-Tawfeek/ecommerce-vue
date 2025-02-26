@@ -1,3 +1,4 @@
+import CartPage from "@/pages/CartPage.vue";
 import HomePage from "@/pages/HomePage.vue";
 import LoginPage from "@/pages/LoginPage.vue";
 import ProductDetailsPage from "@/pages/ProductDetailsPage.vue";
@@ -12,18 +13,34 @@ const router = createRouter({
             path: "/",
             name: "home",
             component: HomePage,
+            meta: {
+                requiresAuth: false,
+            },
         },
         {
             path: "/products",
             name: "products",
             component: ProductPage,
+            meta: {
+                requiresAuth: false,
+            },
         },
         {
             path: "/productDetails/:id",
             name: "product",
             component: ProductDetailsPage,
+            meta: {
+                requiresAuth: false,
+            },
         },
-
+        {
+            path: "/cart",
+            name: "cart",
+            component: CartPage,
+            meta: {
+                requiresAuth: true,
+            },
+        },
         {
             path: "/register",
             name: "register",
@@ -41,19 +58,20 @@ const router = createRouter({
             },
         },
     ],
+    scrollBehavior(to, from, savedPosition) {
+        // always scroll to top
+        return { top: 0 };
+    },
 });
 
-// router.beforeEach(async (to, from, next) => {
-//     const authStore = useAuthStore();
-//     if (!authStore.isAuthenticated && to.meta.requiresAuth) {
-//         // redirect the user to the login page
-//         next({ name: "login" });
-//     } else if (authStore.isAuthenticated && !to.meta.requiresAuth) {
-//         // redirect the user to the home page
-//         next({ name: "home" });
-//     } else {
-//         next();
-//     }
-// });
+router.beforeEach(async (to, from, next) => {
+    const authStore = useAuthStore();
+    if (!authStore.isAuthenticated && to.meta.requiresAuth) {
+        // redirect the user to the login page
+        next({ name: "login" });
+    } else {
+        next();
+    }
+});
 
 export default router;

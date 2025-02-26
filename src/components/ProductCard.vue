@@ -47,6 +47,7 @@
             </div>
             <div
                 class="h-[40px] w-[40px] bg-gray-200 rounded-full flex items-center justify-center cursor-pointer group-hover:bg-primary transition-all duration-300"
+                @click="emit('addToCart', product._id)"
             >
                 <i
                     class="fa-solid fa-cart-shopping text-lg group-hover:text-white transition-all duration-300"
@@ -58,6 +59,8 @@
 
 <script setup>
 const props = defineProps(["product"]);
+
+const emit = defineEmits(["addToCart"]);
 </script>
 
 <style lang="scss" scoped></style>

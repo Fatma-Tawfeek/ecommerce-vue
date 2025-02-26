@@ -1,5 +1,5 @@
 <template>
-    <nav class="bg-white border-gray-200">
+    <nav class="bg-white border-gray-200 shadow">
         <div class="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl p-4">
             <a href="#" class="flex items-center space-x-3 rtl:space-x-reverse">
                 <img src="@/assets/images/Logo.svg" class="h-8" alt="Flowbite Logo" />
@@ -11,10 +11,16 @@
                     alt=""
                 />
                 <div class="cart flex items-center space-x-2">
-                    <img src="@/assets/icons/cart.svg" alt="" />
+                    <RouterLink to="/cart" class="relative">
+                        <img src="@/assets/icons/cart.svg" alt="" />
+                        <span
+                            class="absolute top-0 right-0 bg-primary text-white text-xs w-4 h-4 flex items-center justify-center rounded-full"
+                            >{{ cartStore.numOfCartItems }}</span
+                        >
+                    </RouterLink>
                     <div class="cart-price">
                         <p class="text-xs text-gray-700">Shopping Cart:</p>
-                        <p class="text-sm text-gray-900 font-medium">$57.00</p>
+                        <p class="text-sm text-gray-900 font-medium">${{ cartStore.totalPrice }}</p>
                     </div>
                 </div>
                 <p class="text-sm text-gray-600 hover:underline cursor-pointer" @click="logout">
@@ -60,15 +66,22 @@
 </template>
 <script setup>
 import { useAuthStore } from "@/stores/AuthStore";
-import { useRouter } from "vue-router";
+import { useCartStore } from "@/stores/CartStore";
+import { onMounted } from "vue";
+import { RouterLink, useRouter } from "vue-router";
 
 const authStore = useAuthStore();
 const router = useRouter();
+const cartStore = useCartStore();
 
 function logout() {
     authStore.logout();
     localStorage.removeItem("token");
     router.push({ name: "login" });
 }
+
+onMounted(() => {
+    cartStore.getCartItems();
+});
 </script>
 <style></style>
