@@ -1,3 +1,12 @@
+<template>
+    <div>
+        <MainNavbar v-if="authStore.isAuthenticated"></MainNavbar>
+        <AuthNavbar v-else></AuthNavbar>
+        <RouterView :key="$route.fullPath" />
+        <FooterComponent></FooterComponent>
+    </div>
+</template>
+
 <script setup>
 import { onMounted } from "vue";
 import { RouterView } from "vue-router";
@@ -13,14 +22,5 @@ onMounted(() => {
     }
 });
 </script>
-
-<template>
-    <div>
-        <MainNavbar v-if="authStore.isAuthenticated"></MainNavbar>
-        <AuthNavbar v-else></AuthNavbar>
-        <RouterView :key="$route.fullPath" />
-        <FooterComponent></FooterComponent>
-    </div>
-</template>
 
 <style scoped></style>

@@ -1,9 +1,12 @@
 import CartPage from "@/pages/CartPage.vue";
+import ForgetPasswordPage from "@/pages/ForgetPasswordPage.vue";
 import HomePage from "@/pages/HomePage.vue";
 import LoginPage from "@/pages/LoginPage.vue";
 import ProductDetailsPage from "@/pages/ProductDetailsPage.vue";
 import ProductPage from "@/pages/ProductPage.vue";
 import RegisterPage from "@/pages/RegisterPage.vue";
+import ResetCodePage from "@/pages/ResetCodePage.vue";
+import ResetPasswordPage from "@/pages/ResetPasswordPage.vue";
 import { useAuthStore } from "@/stores/AuthStore";
 import { createRouter, createWebHistory } from "vue-router";
 const router = createRouter({
@@ -53,6 +56,30 @@ const router = createRouter({
             path: "/login",
             name: "login",
             component: LoginPage,
+            meta: {
+                requiresAuth: false,
+            },
+        },
+        {
+            path: "/forget-password",
+            name: "forget-password",
+            component: ForgetPasswordPage,
+            meta: {
+                requiresAuth: false,
+            },
+        },
+        {
+            path: "/verify-reset-code",
+            name: "verify-reset-code",
+            component: ResetCodePage,
+            meta: {
+                requiresAuth: false,
+            },
+        },
+        {
+            path: "/reset-password",
+            name: "reset-password",
+            component: ResetPasswordPage,
             meta: {
                 requiresAuth: false,
             },
