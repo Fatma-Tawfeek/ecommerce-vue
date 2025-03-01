@@ -43,7 +43,12 @@
                         >
                     </li>
                     <li>
-                        <a href="#" class="text-gray-400 hover:underline">Products</a>
+                        <RouterLink
+                            to="/products"
+                            class="text-gray-400 hover:underline"
+                            active-class="text-white"
+                            >Products</RouterLink
+                        >
                     </li>
                     <li>
                         <a href="#" class="text-gray-400 hover:underline">Categories</a>

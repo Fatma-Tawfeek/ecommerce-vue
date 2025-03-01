@@ -18,7 +18,9 @@
                 </div>
             </RouterLink>
         </div>
-        <img :src="product.imageCover" alt="" />
+        <RouterLink :to="`/productDetails/${product._id}`">
+            <img :src="product.imageCover" alt="" />
+        </RouterLink>
 
         <div class="flex justify-between mt-3">
             <div>

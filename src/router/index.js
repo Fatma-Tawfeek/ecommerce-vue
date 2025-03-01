@@ -3,7 +3,7 @@ import ForgetPasswordPage from "@/pages/ForgetPasswordPage.vue";
 import HomePage from "@/pages/HomePage.vue";
 import LoginPage from "@/pages/LoginPage.vue";
 import ProductDetailsPage from "@/pages/ProductDetailsPage.vue";
-import ProductPage from "@/pages/ProductPage.vue";
+import ProductsPage from "@/pages/ProductsPage.vue";
 import RegisterPage from "@/pages/RegisterPage.vue";
 import ResetCodePage from "@/pages/ResetCodePage.vue";
 import ResetPasswordPage from "@/pages/ResetPasswordPage.vue";
@@ -23,7 +23,7 @@ const router = createRouter({
         {
             path: "/products",
             name: "products",
-            component: ProductPage,
+            component: ProductsPage,
             meta: {
                 requiresAuth: false,
             },
