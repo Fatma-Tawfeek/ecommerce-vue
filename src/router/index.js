@@ -4,6 +4,7 @@ import CategoriesPage from "@/pages/CategoriesPage.vue";
 import ForgetPasswordPage from "@/pages/ForgetPasswordPage.vue";
 import HomePage from "@/pages/HomePage.vue";
 import LoginPage from "@/pages/LoginPage.vue";
+import NotFoundPage from "@/pages/NotFoundPage.vue";
 import ProductDetailsPage from "@/pages/ProductDetailsPage.vue";
 import ProductsPage from "@/pages/ProductsPage.vue";
 import RegisterPage from "@/pages/RegisterPage.vue";
@@ -101,6 +102,13 @@ const router = createRouter({
             meta: {
                 requiresAuth: false,
             },
+        },
+
+        {
+            path: "/:pathMatch(.*)*",
+            name: "NotFound",
+            component: NotFoundPage,
+            meta: { requiresAuth: false },
         },
     ],
     scrollBehavior(to, from, savedPosition) {

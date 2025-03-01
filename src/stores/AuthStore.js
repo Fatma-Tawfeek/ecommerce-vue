@@ -1,3 +1,4 @@
+import { jwtDecode } from "jwt-decode";
 import { defineStore } from "pinia";
 
 export const useAuthStore = defineStore("auth", {
@@ -8,6 +9,7 @@ export const useAuthStore = defineStore("auth", {
     }),
     actions: {
         login(token) {
+            this.user = jwtDecode(token);
             this.token = token;
             this.isAuthenticated = true;
         },
