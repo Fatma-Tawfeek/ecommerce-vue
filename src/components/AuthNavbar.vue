@@ -19,18 +19,36 @@
             <div class="flex items-center justify-between">
                 <ul class="flex flex-row font-medium mt-0 space-x-8 rtl:space-x-reverse text-sm">
                     <li>
-                        <RouterLink class="text-gray-400 hover:underline" to="/">Home</RouterLink>
+                        <RouterLink
+                            class="text-gray-400 hover:underline"
+                            to="/"
+                            active-class="text-white"
+                            >Home</RouterLink
+                        >
                     </li>
                     <li>
-                        <RouterLink to="/products" class="text-gray-400 hover:underline"
+                        <RouterLink
+                            to="/products"
+                            class="text-gray-400 hover:underline"
+                            active-class="text-white"
                             >Products</RouterLink
                         >
                     </li>
                     <li>
-                        <a href="#" class="text-gray-400 hover:underline">Categories</a>
+                        <RouterLink
+                            to="/categories"
+                            class="text-gray-400 hover:underline"
+                            active-class="text-white"
+                            >Categories</RouterLink
+                        >
                     </li>
                     <li>
-                        <a href="#" class="text-gray-400 hover:underline">Brands</a>
+                        <RouterLink
+                            to="/brands"
+                            class="text-gray-400 hover:underline"
+                            active-class="text-white"
+                            >Brands</RouterLink
+                        >
                     </li>
                 </ul>
                 <ul class="hidden md:block">

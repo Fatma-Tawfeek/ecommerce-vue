@@ -51,10 +51,20 @@
                         >
                     </li>
                     <li>
-                        <a href="#" class="text-gray-400 hover:underline">Categories</a>
+                        <RouterLink
+                            to="/categories"
+                            class="text-gray-400 hover:underline"
+                            active-class="text-white"
+                            >Categories</RouterLink
+                        >
                     </li>
                     <li>
-                        <a href="#" class="text-gray-400 hover:underline">Brands</a>
+                        <RouterLink
+                            to="/brands"
+                            class="text-gray-400 hover:underline"
+                            active-class="text-white"
+                            >Brands</RouterLink
+                        >
                     </li>
                 </ul>
                 <ul class="hidden md:block">

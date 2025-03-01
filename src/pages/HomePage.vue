@@ -156,7 +156,7 @@
     <section class="py-5 mx-auto max-w-screen-xl px-3 md:px-0">
         <div class="flex justify-between mb-5">
             <h2 class="text-2xl font-[600]">Popular Categories</h2>
-            <router-link to="/products" class="text-primary cursor-pointer">
+            <router-link to="/categories" class="text-primary cursor-pointer">
                 View All <i class="fa-solid fa-arrow-right ml-2"></i>
             </router-link>
         </div>

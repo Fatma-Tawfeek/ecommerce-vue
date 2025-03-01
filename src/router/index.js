@@ -1,4 +1,6 @@
+import BrandsPage from "@/pages/BrandsPage.vue";
 import CartPage from "@/pages/CartPage.vue";
+import CategoriesPage from "@/pages/CategoriesPage.vue";
 import ForgetPasswordPage from "@/pages/ForgetPasswordPage.vue";
 import HomePage from "@/pages/HomePage.vue";
 import LoginPage from "@/pages/LoginPage.vue";
@@ -32,6 +34,22 @@ const router = createRouter({
             path: "/productDetails/:id",
             name: "product",
             component: ProductDetailsPage,
+            meta: {
+                requiresAuth: false,
+            },
+        },
+        {
+            path: "/categories",
+            name: "categories",
+            component: CategoriesPage,
+            meta: {
+                requiresAuth: false,
+            },
+        },
+        {
+            path: "/brands",
+            name: "brands",
+            component: BrandsPage,
             meta: {
                 requiresAuth: false,
             },
