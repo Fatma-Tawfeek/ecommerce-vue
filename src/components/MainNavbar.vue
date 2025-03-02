@@ -60,10 +60,10 @@
                             >
                         </li>
                         <li>
-                            <a
-                                href="#"
+                            <RouterLink
+                                to="/allorders"
                                 class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
-                                >Settings</a
+                                >My Orders</RouterLink
                             >
                         </li>
                         <li>
@@ -82,9 +82,6 @@
                         </li>
                     </ul>
                 </div>
-                <!-- <p class="text-sm text-gray-600 hover:underline cursor-pointer" @click="logout">
-                    Logout
-                </p> -->
             </div>
         </div>
     </nav>

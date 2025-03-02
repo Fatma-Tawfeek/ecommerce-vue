@@ -1,10 +1,12 @@
 import BrandsPage from "@/pages/BrandsPage.vue";
 import CartPage from "@/pages/CartPage.vue";
 import CategoriesPage from "@/pages/CategoriesPage.vue";
+import CheckoutPage from "@/pages/CheckoutPage.vue";
 import ForgetPasswordPage from "@/pages/ForgetPasswordPage.vue";
 import HomePage from "@/pages/HomePage.vue";
 import LoginPage from "@/pages/LoginPage.vue";
 import NotFoundPage from "@/pages/NotFoundPage.vue";
+import OrdersPage from "@/pages/OrdersPage.vue";
 import ProductDetailsPage from "@/pages/ProductDetailsPage.vue";
 import ProductsPage from "@/pages/ProductsPage.vue";
 import RegisterPage from "@/pages/RegisterPage.vue";
@@ -59,6 +61,22 @@ const router = createRouter({
             path: "/cart",
             name: "cart",
             component: CartPage,
+            meta: {
+                requiresAuth: true,
+            },
+        },
+        {
+            path: "/checkout",
+            name: "checkout",
+            component: CheckoutPage,
+            meta: {
+                requiresAuth: true,
+            },
+        },
+        {
+            path: "/allorders",
+            name: "orders",
+            component: OrdersPage,
             meta: {
                 requiresAuth: true,
             },

@@ -11,6 +11,7 @@ export const useCartStore = defineStore("cart", {
             isLoading: false,
             numOfCartItems: 0,
             totalPrice: 0,
+            cartId: null,
         };
     },
     actions: {
@@ -28,6 +29,7 @@ export const useCartStore = defineStore("cart", {
                     this.numOfCartItems = res.data.numOfCartItems;
                     this.totalPrice = res.data.data.totalCartPrice;
                     this.isLoading = false;
+                    this.cartId = res.data.cartId;
                 })
                 .catch((err) => {
                     console.log(err);
