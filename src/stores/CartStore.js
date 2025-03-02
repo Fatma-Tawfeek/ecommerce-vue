@@ -36,12 +36,12 @@ export const useCartStore = defineStore("cart", {
         },
 
         addToCart(productId) {
+            this.isLoading = true;
             const authStore = useAuthStore();
             const router = useRouter();
             if (!authStore.isAuthenticated) {
                 router.push({ name: "login" });
             } else {
-                this.isLoading = true;
                 axios
                     .post(
                         "https://ecommerce.routemisr.com/api/v1/cart",

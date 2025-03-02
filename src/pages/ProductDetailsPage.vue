@@ -93,6 +93,7 @@
                 v-for="relatedProduct in relatedProducts"
                 :key="product.id"
                 :product="relatedProduct"
+                @addToCart="cartStore.addToCart"
             />
         </div>
     </section>
