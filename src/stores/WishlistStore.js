@@ -27,7 +27,7 @@ export const useWishlistStore = defineStore("wishlist", {
                 })
                 .catch((err) => {
                     console.log(err);
-                    isLoading.value = false;
+                    this.isLoading = false;
                 });
         },
 

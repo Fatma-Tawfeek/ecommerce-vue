@@ -4,7 +4,10 @@
             <h2 class="text-xl font-semibold text-gray-900 dark:text-white sm:text-2xl">
                 Wishlist
             </h2>
-            <div class="mt-6 grid grid-cols-3 gap-4" v-if="wishlistStore.wishlistItems?.length > 0">
+            <div
+                class="mt-6 grid grid-cols-1 md:grid-cols-3 gap-4"
+                v-if="wishlistStore.wishlistItems?.length > 0"
+            >
                 <div
                     class="rounded-lg border border-gray-200 bg-white p-4 hover:shadow-md dark:border-gray-700 dark:bg-gray-800 md:p-6"
                     v-for="product in wishlistStore.wishlistItems"

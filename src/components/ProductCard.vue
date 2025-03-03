@@ -5,15 +5,17 @@
         <div
             class="flex flex-col justify-between gap-2 absolute top-3 -right-10 group-hover:right-3 transition-all duration-300"
         >
-            <div
-                class="h-[40px] w-[40px] bg-white rounded-full border-1 border-gray-200 flex items-center justify-center cursor-pointer"
-                @click="emit('toggleWishlist', product._id)"
-            >
-                <i
-                    class="fa-solid fa-heart text-primary"
-                    v-if="wishlistStore.isWishlistItem(product._id)"
-                ></i>
-                <i class="fa-regular fa-heart" v-else></i>
+            <div v-if="authStore.isAuthenticated">
+                <div
+                    class="h-[40px] w-[40px] bg-white rounded-full border-1 border-gray-200 flex items-center justify-center cursor-pointer"
+                    @click="emit('toggleWishlist', product._id)"
+                >
+                    <i
+                        class="fa-solid fa-heart text-primary"
+                        v-if="wishlistStore.isWishlistItem(product._id)"
+                    ></i>
+                    <i class="fa-regular fa-heart" v-else></i>
+                </div>
             </div>
             <RouterLink :to="`/productDetails/${product._id}`">
                 <div
@@ -65,12 +67,14 @@
 </template>
 
 <script setup>
+import { useAuthStore } from "@/stores/AuthStore";
 import { useWishlistStore } from "@/stores/WishlistStore";
 
 const props = defineProps(["product"]);
 
 const emit = defineEmits(["addToCart", "addToWishlist"]);
 
+const authStore = useAuthStore();
 const wishlistStore = useWishlistStore();
 </script>
 

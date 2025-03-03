@@ -1,7 +1,7 @@
 import axios from "axios";
 import { defineStore } from "pinia";
 import { useAuthStore } from "./AuthStore";
-import { useRouter } from "vue-router";
+import router from "@/router";
 import { toast } from "vue3-toastify";
 
 export const useCartStore = defineStore("cart", {
@@ -40,7 +40,6 @@ export const useCartStore = defineStore("cart", {
         addToCart(productId) {
             this.isLoading = true;
             const authStore = useAuthStore();
-            const router = useRouter();
             if (!authStore.isAuthenticated) {
                 router.push({ name: "login" });
             } else {
