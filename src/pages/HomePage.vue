@@ -189,7 +189,6 @@
         :is-full-page="fullPage"
         color="#00b207"
     />
-    <PopupComponent></PopupComponent>
 </template>
 
 <script setup>
@@ -200,7 +199,6 @@ import { onMounted, ref } from "vue";
 import Loading from "vue-loading-overlay";
 import "vue3-carousel/carousel.css";
 import { Carousel, Slide, Pagination, Navigation } from "vue3-carousel";
-import PopupComponent from "@/components/PopupComponent.vue";
 import { useCartStore } from "@/stores/CartStore";
 
 const config = {
