@@ -72,9 +72,16 @@
                     <button class="btn-primary w-full" @click="cartStore.addToCart(product._id)">
                         Add To Cart <i class="fa-solid fa-cart-shopping"></i>
                     </button>
-                    <i
-                        class="fa-regular fa-heart text-xl cursor-pointer bg-primary/10 text-primary p-3 rounded-full"
-                    ></i>
+                    <div @click="wishlistStore.toggleWishlistItem(product._id)">
+                        <i
+                            v-if="wishlistStore.isWishlistItem(product._id)"
+                            class="fa-solid fa-heart text-xl cursor-pointer bg-primary/10 text-primary p-3 rounded-full"
+                        ></i>
+                        <i
+                            v-else
+                            class="fa-regular fa-heart text-xl cursor-pointer bg-primary/10 text-primary p-3 rounded-full"
+                        ></i>
+                    </div>
                 </div>
                 <p class="font-[500] mt-3">
                     Category:
@@ -118,6 +125,9 @@ import "vue-loading-overlay/dist/css/index.css";
 import "vue3-carousel/carousel.css";
 import { Carousel, Slide, Navigation } from "vue3-carousel";
 import { useCartStore } from "@/stores/CartStore";
+import { useWishlistStore } from "@/stores/WishlistStore";
+
+const wishlistStore = useWishlistStore();
 
 /* product carousel */
 const currentSlide = ref(0);

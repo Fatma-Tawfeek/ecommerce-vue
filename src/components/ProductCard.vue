@@ -7,8 +7,13 @@
         >
             <div
                 class="h-[40px] w-[40px] bg-white rounded-full border-1 border-gray-200 flex items-center justify-center cursor-pointer"
+                @click="emit('toggleWishlist', product._id)"
             >
-                <img src="../assets/icons/heart.svg" class="h-[20px] w-[20px]" alt="" />
+                <i
+                    class="fa-solid fa-heart text-primary"
+                    v-if="wishlistStore.isWishlistItem(product._id)"
+                ></i>
+                <i class="fa-regular fa-heart" v-else></i>
             </div>
             <RouterLink :to="`/productDetails/${product._id}`">
                 <div
@@ -60,9 +65,13 @@
 </template>
 
 <script setup>
+import { useWishlistStore } from "@/stores/WishlistStore";
+
 const props = defineProps(["product"]);
 
-const emit = defineEmits(["addToCart"]);
+const emit = defineEmits(["addToCart", "addToWishlist"]);
+
+const wishlistStore = useWishlistStore();
 </script>
 
 <style lang="scss" scoped></style>

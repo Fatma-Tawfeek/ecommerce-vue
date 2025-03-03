@@ -144,8 +144,11 @@
 
                                         <div class="flex items-center gap-4">
                                             <button
+                                                @click="
+                                                    wishlistStore.addToWishlist(product.product._id)
+                                                "
                                                 type="button"
-                                                class="inline-flex items-center text-sm font-medium text-gray-500 hover:text-gray-900 hover:underline dark:text-gray-400 dark:hover:text-white"
+                                                class="inline-flex cursor-pointer items-center text-sm font-medium text-gray-500 hover:text-gray-900 hover:underline dark:text-gray-400 dark:hover:text-white"
                                             >
                                                 <svg
                                                     class="me-1.5 h-5 w-5"
@@ -290,6 +293,7 @@
 <script setup>
 import { useAuthStore } from "@/stores/AuthStore";
 import { useCartStore } from "@/stores/CartStore";
+import { useWishlistStore } from "@/stores/WishlistStore";
 import axios from "axios";
 import { onMounted, ref } from "vue";
 import Loading from "vue-loading-overlay";
@@ -299,6 +303,7 @@ import { toast } from "vue3-toastify";
 const isCountLoading = ref(false);
 const authStore = useAuthStore();
 const cartStore = useCartStore();
+const wishlistStore = useWishlistStore();
 
 function removeCartItem(id) {
     axios

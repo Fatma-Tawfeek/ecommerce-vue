@@ -179,6 +179,7 @@
                 :key="product.id"
                 :product="product"
                 @addToCart="cartStore.addToCart"
+                @toggleWishlist="wishlistStore.toggleWishlistItem"
             />
         </div>
     </section>
@@ -200,6 +201,7 @@ import Loading from "vue-loading-overlay";
 import "vue3-carousel/carousel.css";
 import { Carousel, Slide, Pagination, Navigation } from "vue3-carousel";
 import { useCartStore } from "@/stores/CartStore";
+import { useWishlistStore } from "@/stores/WishlistStore";
 
 const config = {
     autoplay: 3000,
@@ -215,6 +217,7 @@ const products = ref([]);
 const categories = ref([]);
 
 const cartStore = useCartStore();
+const wishlistStore = useWishlistStore();
 
 function getProducts() {
     isLoading.value = true;
@@ -243,6 +246,7 @@ function getCategories() {
 onMounted(() => {
     getProducts();
     getCategories();
+    wishlistStore.getWishlistItems();
 });
 </script>
 

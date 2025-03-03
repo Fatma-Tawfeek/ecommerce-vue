@@ -12,6 +12,7 @@ import ProductsPage from "@/pages/ProductsPage.vue";
 import RegisterPage from "@/pages/RegisterPage.vue";
 import ResetCodePage from "@/pages/ResetCodePage.vue";
 import ResetPasswordPage from "@/pages/ResetPasswordPage.vue";
+import WishlistPage from "@/pages/WishlistPage.vue";
 import { useAuthStore } from "@/stores/AuthStore";
 import { createRouter, createWebHistory } from "vue-router";
 const router = createRouter({
@@ -61,6 +62,14 @@ const router = createRouter({
             path: "/cart",
             name: "cart",
             component: CartPage,
+            meta: {
+                requiresAuth: true,
+            },
+        },
+        {
+            path: "/wishlist",
+            name: "wishlist",
+            component: WishlistPage,
             meta: {
                 requiresAuth: true,
             },
