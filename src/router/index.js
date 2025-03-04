@@ -149,6 +149,9 @@ router.beforeEach(async (to, from, next) => {
     if (!authStore.isAuthenticated && to.meta.requiresAuth) {
         // redirect the user to the login page
         next({ name: "login" });
+    }
+    if (authStore.isAuthenticated && (to.name === "login" || to.name === "register")) {
+        next({ name: "home" });
     } else {
         next();
     }
